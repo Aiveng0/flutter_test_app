@@ -3,6 +3,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:test_app/pages/login_page.dart';
 import 'package:test_app/widgets/login_tab.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -66,7 +67,8 @@ class _DemoAppState extends State<DemoApp> with SingleTickerProviderStateMixin {
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           LoginTab(),
-          Center(child: Text('Sign In')),
+          //Center(child: Text('Sign In')),
+          LoginScreen(), // must be deleted
         ],
       ),
     );
