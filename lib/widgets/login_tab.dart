@@ -68,28 +68,46 @@ class _LoginTabState extends State<LoginTab> {
                   children: [
                     StartPageTextField(
                       Icons.phone,
-
                       'Phone number',
                       textColor: Colors.black,
-                      boxContentBGColor: Colors.white,
+                      backgroundColor: Colors.white,
                     ),
                     StartPageTextField(
                       Icons.email,
                       'Email Addrress',
                       textColor: Colors.black,
-                      boxContentBGColor: Colors.white,
+                      backgroundColor: Colors.white,
                     ),
                     StartPageTextField(
                       Icons.facebook,
                       'Continue with Facebook',
-                      boxContentColor: Colors.blueAccent,
-                      boxContentBGColor: Colors.blueAccent,
+                      borderColor: Colors.blueAccent,
+                      backgroundColor: Colors.blueAccent,
                     ),
                     StartPageTextField(
                       Icons.g_mobiledata,
                       'Continue with Google',
-                      boxContentColor: Colors.red,
-                      boxContentBGColor: Colors.red,
+                      borderColor: Colors.red,
+                      backgroundColor: Colors.red,
+                    ),
+                    StartPageTextField(
+                      Icons.drive_folder_upload,
+                      'Continue with GitHub',
+                      borderColor: Colors.purple.shade700,
+                      backgroundColor: Colors.purple.shade700,
+                    ),
+                    StartPageTextField(
+                      Icons.local_drink,
+                      'Continue with LinkedIn',
+                      borderColor: Colors.black,
+                      backgroundColor: Colors.black,
+                    ),
+                    StartPageTextField(
+                      Icons.elderly,
+                      'Continue with AnotherHub',
+                      textColor: Colors.orange,
+                      borderColor: Colors.orange,
+                      backgroundColor: Colors.black,
                     ),
                   ],
                 ),
