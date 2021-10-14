@@ -34,18 +34,10 @@ class MainScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: const Icon(
-                    Icons.account_box,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 25),
                   child: Image.asset(
-                    'assets/img/panda.png',
+                    'assets/img/logo1.png',
                     width: 150,
                   ),
                 ),
