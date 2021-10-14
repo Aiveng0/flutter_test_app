@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/widgets/start_page_text_field.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen
+({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,7 @@ class FirstScreen extends StatelessWidget {
               ),
             ),
             StartPageTextField(Icons.ac_unit, 'Lorem'),
+            
           ],
         ),
       ),

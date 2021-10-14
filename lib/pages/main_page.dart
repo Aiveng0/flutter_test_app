@@ -91,7 +91,7 @@ class MainScreen extends StatelessWidget {
                         // primary: Colors.deepOrange,
                         ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/first');
+                      Navigator.pushNamed(context, '/loginScreen');
                     },
                     child: const Text('Login'),
                   ),
@@ -107,7 +107,7 @@ class MainScreen extends StatelessWidget {
                   InkWell(
                     onTap: () => {
                       print('tap'),
-                      Navigator.pushNamed(context, '/second'),
+                      Navigator.pushNamed(context, '/signInScreen'),
                     },
                     child: Text(
                       'Sign In',
