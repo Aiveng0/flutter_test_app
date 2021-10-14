@@ -3,6 +3,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:test_app/widgets/login_tab.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({
@@ -25,34 +26,48 @@ class DemoApp extends StatefulWidget {
   _DemoAppState createState() => _DemoAppState();
 }
 
-class _DemoAppState extends State<DemoApp> {
-  List<String> labels = ['Home', 'Message', 'Notofication', 'Settings'];
-  int counter = 0;
+class _DemoAppState extends State<DemoApp> with SingleTickerProviderStateMixin {
+  late TabController controller;
+  List tabName = ['Login', 'Sign In'];
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = TabController(length: 2, vsync: this);
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        backgroundColor: Colors.amber,
-        appBar: AppBar(
-          title: Text('Toogle Bar'),
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('${tabName[controller.index]} - tab'),
+        centerTitle: true,
+        bottom: TabBar(
+          controller: controller,
           // ignore: prefer_const_literals_to_create_immutables
-          bottom: TabBar(
-            tabs: [
-              Tab(text: 'Login', icon: Icon(Icons.login)),
-              Tab(text: 'Sing In', icon: Icon(Icons.plus_one)),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            Center(child: Text('Login')),
-            Center(child: Text('Sign In')),
+          tabs: [
+            Tab(text: 'Login', icon: Icon(Icons.login)),
+            Tab(text: 'Sing In', icon: Icon(Icons.plus_one)),
           ],
         ),
+      ),
+      body: TabBarView(
+        controller: controller,
+        // ignore: prefer_const_literals_to_create_immutables
+        children: [
+          LoginTab(),
+          Center(child: Text('Sign In')),
+        ],
       ),
     );
   }
