@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:test_app/pages/login_page.dart';
+import 'package:test_app/pages/sign_in_page.dart';
 import 'package:test_app/widgets/start_page_text_field.dart';
 
 class MainScreen extends StatelessWidget {
@@ -82,8 +84,11 @@ class MainScreen extends StatelessWidget {
                         )
                         // primary: Colors.deepOrange,
                         ),
-                    onPressed: () =>
-                      Navigator.pushNamed(context, '/loginScreen'),
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        )),
                     child: const Text('Login'),
                   ),
                 ),
@@ -98,8 +103,12 @@ class MainScreen extends StatelessWidget {
                     ),
                     Container(width: 10), //delete
                     InkWell(
-                      onTap: () =>
-                          Navigator.pushNamed(context, '/signInScreen'),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignInScreen(),
+                        ),
+                      ),
                       child: Text(
                         'Sign In',
                         style: TextStyle(

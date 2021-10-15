@@ -1,15 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:test_app/in.dart';
 import 'package:test_app/widgets/login_tab.dart';
+
+//int selectedIndex = 1;
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({
     Key? key,
-    this.number = 0,
   }) : super(key: key);
-
-  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,9 @@ class SignInScreen extends StatelessWidget {
 }
 
 class DemoApp extends StatefulWidget {
-  const DemoApp({Key? key}) : super(key: key);
+  const DemoApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _DemoAppState createState() => _DemoAppState();
@@ -26,18 +28,17 @@ class DemoApp extends StatefulWidget {
 
 class _DemoAppState extends State<DemoApp> with SingleTickerProviderStateMixin {
   late TabController controller;
-  // List tabName = ['Login', 'Sign In', 'Hello', 'Setitngs', '1', '2'];
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
-
     controller = TabController(
       length: choices.length,
       vsync: this,
-      //_selectedIndex: controller.index,
     );
+
+    controller.animateTo(lastOpenTabIndex);
 
     controller.addListener(() {
       setState(() {
@@ -48,12 +49,15 @@ class _DemoAppState extends State<DemoApp> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
+    lastOpenTabIndex = controller.index;
+    printC('LAST OPEN TAB INDEX === ${lastOpenTabIndex}');
     controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    printC('SELECTED INDEX === ${_selectedIndex}');
     return Scaffold(
       appBar: AppBar(
         title: Text('${choices[controller.index].title} - tab'),
@@ -62,26 +66,6 @@ class _DemoAppState extends State<DemoApp> with SingleTickerProviderStateMixin {
           controller: controller,
           isScrollable: true,
           // ignore: prefer_const_literals_to_create_immutables
-
-          // tabs: [
-          //   Tab(
-          //     text: 'Login',
-          //     icon: Icon(Icons.login),
-          //     // _selectedIndex = controller.index;
-          //   ),
-          //   Tab(
-          //     text: 'Sing In',
-          //     icon: Icon(Icons.plus_one),
-          //   ),
-          //   Tab(
-          //     text: 'Hello',
-          //     icon: Icon(Icons.face),
-          //   ),
-          //   Tab(
-          //     text: 'Settings',
-          //     icon: Icon(Icons.settings),
-          //   ),
-          // ],
           tabs: choices.map<Widget>((Choice choice) {
             return Tab(
               text: choice.title,
@@ -105,7 +89,6 @@ class _DemoAppState extends State<DemoApp> with SingleTickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_forward),
         onPressed: () {
-          print(_selectedIndex);
           if (_selectedIndex < choices.length - 1) {
             controller.animateTo(_selectedIndex + 1);
           } else {
