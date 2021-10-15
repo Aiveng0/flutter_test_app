@@ -82,33 +82,33 @@ class MainScreen extends StatelessWidget {
                         )
                         // primary: Colors.deepOrange,
                         ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/loginScreen');
-                    },
+                    onPressed: () =>
+                      Navigator.pushNamed(context, '/loginScreen'),
                     child: const Text('Login'),
                   ),
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text(
-                    'Don`t have account',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  Container(width: 10), //delete
-                  InkWell(
-                    onTap: () => {
-                      print('tap'),
-                      Navigator.pushNamed(context, '/signInScreen'),
-                    },
-                    child: Text(
-                      'Sign In',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Don`t have account',
                       style: TextStyle(
-                        color: Colors.lightBlue[200],
+                        color: Colors.white,
                       ),
                     ),
-                  ),
-                ]),
+                    Container(width: 10), //delete
+                    InkWell(
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/signInScreen'),
+                      child: Text(
+                        'Sign In',
+                        style: TextStyle(
+                          color: Colors.lightBlue[200],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
